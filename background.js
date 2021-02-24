@@ -30,16 +30,16 @@ async function onMenuShow(info) {
 			console.log(val.name);
 			browser.menus.create({   // menus permission
 				id: extId + ' ' + val.name,
-				title: "Handle with " + val.name,
+				title: extId + ' ' + val.name,
 				documentUrlPatterns: [ "<all_urls>" ],
-				contexts: ["page", "link", "image", "editable" ],
+				contexts: [ "link" ],
 			},onError);
 		});
 
 		browser.menus.refresh();
 
 	}catch(e) {
-		onError(e);
+		onError(e, 'failed background.js::onMenuShow()::browser.storage.local.get');
 	}
 }
 

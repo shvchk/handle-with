@@ -5,17 +5,6 @@
 	}
 	window.Handle_with_hasRun = true;
 
-	/*
-	document.querySelectorAll('a').forEach( (a) => {
-	//	console.debug(a.href);
-		if( a.href.startsWith("https://www.youtube.com/watch?v=") ) { 
-			console.log('Handle-with', a.href);
-			a.href = a.href = 'ytube://' + a.href;
-		}
-	});
-	*/
-
-
 	function simulateClick(elem) {
 		const evt = new MouseEvent('click', {
 			bubbles: false,
@@ -28,12 +17,12 @@
 	browser.runtime.onMessage.addListener( (message) => {
 
 		const clickTarget = browser.menus.getTargetElement(message.targetElementId);
+		console.log(clickTarget.href);
 		if(clickTarget === null){
 			alert('No clickTarget found!');
 			return;
 		}
 
-		console.log(clickTarget.href);
 		
 		// add empty data link
 		let link = document.createElement('a');
