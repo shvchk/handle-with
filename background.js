@@ -1,4 +1,4 @@
-const extId = 'Handle-with';
+const extId = 'handle_with';
 
 function onError(e, msg){
 	console.log(`${extId}::onError error: ${e}, message: ${msg}`);

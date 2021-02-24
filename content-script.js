@@ -1,12 +1,9 @@
 (function(){
 
-	if (typeof window.Handle_with_hasRun !== 'undefined'){
+	if (typeof window.handle_with_hasRun !== 'undefined'){
 		return;
 	}
-	window.Handle_with_hasRun = true;
-
-	console.log('Handle-with loaded');
-	
+	window.nandle_with_hasRun = true;
 
 	function getClosestANCOR(node){
 		while(	
@@ -29,15 +26,10 @@
 
 	browser.runtime.onMessage.addListener( (message) => {
 
-		console.log(message.mode);
-
 		const clickTarget = browser.menus.getTargetElement(message.targetElementId);
 
 		const ancor = getClosestANCOR(clickTarget);
 
-		//console.log(JSON.stringify(clickTarget));
-
-		console.log(ancor.href);
 		if(ancor === null || typeof ancor.href !== 'string'){
 			alert('No clickTarget found!');
 			return;
