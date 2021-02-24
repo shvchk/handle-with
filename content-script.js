@@ -5,6 +5,19 @@
 	}
 	window.Handle_with_hasRun = true;
 
+	console.log('Handle-with loaded');
+	
+
+	function getClosestANCOR(node){
+		while(	
+			node !== null 
+			&& node.tagName !== 'A'
+		) {
+			node = node.parentNode;
+		}
+		return node;
+	}
+
 	function simulateClick(elem) {
 		const evt = new MouseEvent('click', {
 			bubbles: false,
@@ -16,9 +29,16 @@
 
 	browser.runtime.onMessage.addListener( (message) => {
 
+		console.log(message.mode);
+
 		const clickTarget = browser.menus.getTargetElement(message.targetElementId);
-		console.log(clickTarget.href);
-		if(clickTarget === null){
+
+		const ancor = getClosestANCOR(clickTarget);
+
+		//console.log(JSON.stringify(clickTarget));
+
+		console.log(ancor.href);
+		if(ancor === null || typeof ancor.href !== 'string'){
 			alert('No clickTarget found!');
 			return;
 		}
@@ -33,12 +53,13 @@
 
 		//link.setAttribute('href','data:text/csv;charset=utf-8,'+clickTarget.href);
 		//link.setAttribute('href','handle-with://'+encodeURIComponent(clickTarget.href));
-		link.setAttribute('href',message.mode + '://' + clickTarget.href);
+		alert(message.mode + '://' + ancor.href);
+		link.setAttribute('href', message.mode + '://' + ancor.href);
 		simulateClick(link);
 
-		setTimeout(function() {
+		///setTimeout(function() {
 			link.remove();
-		},5000);
+		//},5000);
 	});
 
 

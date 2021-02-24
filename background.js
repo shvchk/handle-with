@@ -12,7 +12,7 @@ async function onMenuClicked(clickData, tab) {
 	try {
 		await browser.tabs.sendMessage(tab.id, {  // activeTab permission 
 			"targetElementId": clickData.targetElementId, 
-			"mode": clickData.menuItemId.replace(extId,''),
+			"mode": clickData.menuItemId.replace(extId + ' ',''),
 		});
 	}catch(e){
 		onError(e, 'failed background.js::onMenuClicked()::browser.tabs.sendMessage()');
@@ -32,7 +32,7 @@ async function onMenuShow(info) {
 				id: extId + ' ' + val.name,
 				title: extId + ' ' + val.name,
 				documentUrlPatterns: [ "<all_urls>" ],
-				contexts: [ "link" ],
+				contexts: ["page", "link", "image", "editable" ],
 			},onError);
 		});
 
