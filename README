@@ -19,7 +19,7 @@ EXTRDIR=$(mktemp -d)
 wget -q --show-progress 'https://github.com/igorlogius/handle_with/archive/main.zip' -O $ZIPFILE
 
 # extract without paths and README
-unzip -j $ZIPFILE -d $EXTRDIR -x "*/README"
+unzip -j $ZIPFILE -d $EXTRDIR -x "*/README" "*/handle_with.sh" "*/handle_with.py" "*/handle_with.bat" "*/handle_with.js"
 
 # re-pack as xpi (zip) without paths and extended file attributes 
 XPI="handle_with-$(grep '"version"' $EXTRDIR/manifest.json |cut -d'"' -f4)-$(date '+%F_%T').xpi" 
