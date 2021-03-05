@@ -40,11 +40,11 @@
 		let link = document.createElement('a');
 		link.style.display = 'none';
 		link.setAttribute('target', '_blank');
-		//link.setAttribute('download', 'handle-with');
+		//link.setAttribute('download', 'handle_with');
 		document.body.append(link);
 
 		//link.setAttribute('href','data:text/csv;charset=utf-8,'+clickTarget.href);
-		//link.setAttribute('href','handle-with://'+encodeURIComponent(clickTarget.href));
+		//link.setAttribute('href','handle_with://'+encodeURIComponent(clickTarget.href));
 		alert(message.mode + '://' + ancor.href);
 		link.setAttribute('href', message.mode + '://' + ancor.href);
 		simulateClick(link);
