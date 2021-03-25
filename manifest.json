@@ -1,27 +1,32 @@
 {
-
-	"background": {
-		"scripts": [
-			"background.js"
-		]
-	},
-	"content_scripts": [{
-		"all_frames": true
-		,"js": ["content-script.js"]
-		,"matches": ["<all_urls>"]
-		,"run_at": "document_idle"
-	}],
-	"description": "",
-	"manifest_version": 2,
-	"name": "handle_with",
-	"permissions": [
-		"menus",
-		"activeTab",
-    		"storage"
-	],
-	"version": "1.0.0",
-
+  "author": "igorlogius",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "content-script.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "description": "tbd.",
+  "manifest_version": 2,
+  "name": "handleWith",
   "options_ui": {
     "page": "options.html"
-  }
+  },
+  "permissions": [
+    "menus",
+    "activeTab",
+    "storage"
+  ],
+  "version": "1.0.0"
 }

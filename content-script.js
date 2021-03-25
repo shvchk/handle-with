@@ -1,9 +1,9 @@
 (function(){
 
-	if (typeof window.handle_with_hasRun !== 'undefined'){
+	if (typeof window.handleWith_hasRun !== 'undefined'){
 		return;
 	}
-	window.nandle_with_hasRun = true;
+	window.handleWith_hasRun = true;
 
 	function getClosestANCOR(node){
 		while(	
