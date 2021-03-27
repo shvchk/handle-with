@@ -17,7 +17,7 @@
       "run_at": "document_idle"
     }
   ],
-  "description": "tbd.",
+  "description": "Run external applications from the context (right click) menu",
   "icons": {
 	"128": "icon.png"
   },
