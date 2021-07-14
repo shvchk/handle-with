@@ -28,12 +28,27 @@ async function onMenuShow(info) {
 						frameId: info.frameId,  // handles links in iframes
 						code: `
 						(function() {
-							function simulateClick(elem) { const evt = new MouseEvent('click', { bubbles: false, cancelable: false, view: window }); elem.dispatchEvent(evt); };
+							function simulateClick(elem) { 
+								const evt = new MouseEvent('click',{ bubbles: false, cancelable: false, view: window }); 
+								elem.dispatchEvent(evt); 
+							}
+							function getClosestANCOR(node){
+								while(true){ 
+									if (node === null || (node.tagName === 'A' &&  typeof node.href === 'string' )){
+										return node;
+									}
+									node=node.parentNode
+								}
+							}
+							const clickTarget = browser.menus.getTargetElement(${info.targetElementId});
+					                const ancor = getClosestANCOR(clickTarget);
+               						if(ancor === null){ alert('handleWith: No usable anchor target found!');return; }
+							console.log('handleWith: found usable anchor target "${proto.name}://' + ancor.href + '"');
 							const link = document.createElement('a');
 							link.style.display = 'none';
 							link.setAttribute('target', '_blank');
 							document.body.append(link);
-							const href = '${proto.name}://' + browser.menus.getTargetElement(${info.targetElementId}).href;
+							const href = '${proto.name}://' + ancor.href;
 							link.setAttribute('href',href);
 							simulateClick(link);
 							link.remove();
