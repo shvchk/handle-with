@@ -5,12 +5,12 @@
       "background.js"
     ]
   },
-  "description": "Run external applications from the context (right click) menu",
+  "description": "run external applications from the context (right click) menu",
   "icons": {
 	"128": "icon.png"
   },
   "manifest_version": 2,
-  "name": "handleWith",
+  "name": "handle-with",
   "options_ui": {
     "page": "options.html"
   },

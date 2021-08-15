@@ -11,5 +11,5 @@ parts = arg1.partition('://')
 action = parts[0]
 href = parts[2]
 
-with open("/tmp/handleWith.log", "a") as log:
+with open("/tmp/handle-with.log", "a") as log:
     log.write('action=' + action + ', href=' + href + '\n')

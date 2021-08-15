@@ -42,8 +42,8 @@ async function onMenuShow(info) {
 							}
 							const clickTarget = browser.menus.getTargetElement(${info.targetElementId});
 					                const ancor = getClosestANCOR(clickTarget);
-               						if(ancor === null){ alert('handleWith: No usable anchor target found!');return; }
-							console.log('handleWith: found usable anchor target "${proto.name}://' + ancor.href + '"');
+               						if(ancor === null){ alert('handle-with: No usable anchor target found!');return; }
+							console.log('handle-with: found usable anchor target "${proto.name}://' + ancor.href + '"');
 							const link = document.createElement('a');
 							link.style.display = 'none';
 							link.setAttribute('target', '_blank');
