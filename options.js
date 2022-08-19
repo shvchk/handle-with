@@ -1,3 +1,4 @@
+/* global browser */
 
 function deleteRow(rowTr) {
 	var mainTableBody = document.getElementById('mainTableBody');
@@ -20,7 +21,7 @@ function createTableRow(feed) {
 			tr.insertCell().appendChild(input);
 
 		}else if( key === 'name'){
-			var input = document.createElement('textarea');
+			input = document.createElement('textarea');
 			input.className = key;
 			input.placeholder = key;
 			input.style.width = '100%';
@@ -28,7 +29,7 @@ function createTableRow(feed) {
 			tr.insertCell().appendChild(input);
 		}else
 			if( key !== 'action'){
-				var input = document.createElement('input');
+				input = document.createElement('input');
 				input.className = key;
 				input.placeholder = key;
 				input.style.width = '100%';
@@ -50,7 +51,7 @@ function collectConfig() {
 	// collect configuration from DOM
 	var mainTableBody = document.getElementById('mainTableBody');
 	var feeds = [];
-	for (var row = 0; row < mainTableBody.rows.length; row++) { 
+	for (var row = 0; row < mainTableBody.rows.length; row++) {
 		try {
 			var name = mainTableBody.rows[row].querySelector('.name').value.trim().toLowerCase();
 			var activ = mainTableBody.rows[row].querySelector('.activ').checked;
@@ -85,13 +86,12 @@ function createButton(text, id, callback, submit) {
 	return span;
 }
 
-async function saveOptions(e) {
+async function saveOptions() {
 	var feeds = collectConfig();
 	await browser.storage.local.set({ 'protocols': feeds });
 }
 
 async function restoreOptions() {
-	var mainTableBody = document.getElementById('mainTableBody');
 	createTableRow({
 		'activ': 1,
 		'name': '' ,
@@ -112,7 +112,7 @@ const impbtnWrp = document.getElementById('impbtn_wrapper');
 const impbtn = document.getElementById('impbtn');
 const expbtn = document.getElementById('expbtn');
 
-expbtn.addEventListener('click', async function (evt) {
+expbtn.addEventListener('click', async function () {
     var dl = document.createElement('a');
     var res = await browser.storage.local.get('protocols');
     var content = JSON.stringify(res.protocols);
@@ -128,18 +128,18 @@ expbtn.addEventListener('click', async function (evt) {
 });
 
 // delegate to real Import Button which is a file selector
-impbtnWrp.addEventListener('click', function(evt) {
+impbtnWrp.addEventListener('click', function() {
 	impbtn.click();
 })
 
-impbtn.addEventListener('input', function (evt) {
-	
+impbtn.addEventListener('input', function () {
+
 	var file  = this.files[0];
 
 	//console.log(file.name);
-	
-	var reader = new FileReader();
-	        reader.onload = async function(e) {
+
+    var reader = new FileReader();
+            reader.onload = async function() {
             try {
                 var config = JSON.parse(reader.result);
 		//console.log("impbtn", config);

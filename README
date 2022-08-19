@@ -1,4 +1,0 @@
-#!/bin/bash
-export AMO='https://addons.mozilla.org/en-US/firefox/addon/handle-with' 
-export IGN='*/handle-with.sh */handle-with.py */handle-with.bat'
-curl 'https://raw.githubusercontent.com/igorlogius/meta-addon-builder/main/README' | sh
