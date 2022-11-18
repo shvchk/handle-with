@@ -1,0 +1,13 @@
+Run external application from the Context (Right Click) Menu
+
+<b>Usage: </b>
+<ol>
+	<li>Install Add-on</li>
+	<li>Goto the addons preferences page  and add a custom protocol name (for example: "youtube-dl")  </li>
+	<li>In a new tab open "about:config"</li>
+	<li>Set "network.protocol-handler.expose.youtube-dl"  to type "boolean" with value "false", to activate the prompt the nextime a link with this protocol is clicked </li>
+	<li>Open a Website and right click on any link</li>
+	<li>In the context menu click the entry  "handleWith youtube-dl" </li>
+	<li>Firefox will now prompt you to specify the programm or script which should handle the protocol. </li>
+	<li>Supply a script (some examples: https://github.com/igorlogius/handle-with/tree/main/handler )</li>
+</ol>
