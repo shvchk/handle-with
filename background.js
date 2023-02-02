@@ -17,7 +17,7 @@ async function onMenuShow(/*info*/) {
 				id: extname + ' ' + proto.name,
 				title: extname + ' ' + proto.name,
 				documentUrlPatterns: [ "<all_urls>" ],
-				contexts: ["link"],
+				contexts: ["link","page","all"],
 				onclick: (info/*, tab*/) => {
 				    const link = document.createElement('a');
 				    const href = proto.name + '://' + info.linkUrl;
