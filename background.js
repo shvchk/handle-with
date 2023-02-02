@@ -17,10 +17,21 @@ async function onMenuShow(/*info*/) {
 				id: extname + ' ' + proto.name,
 				title: extname + ' ' + proto.name,
 				documentUrlPatterns: [ "<all_urls>" ],
-				contexts: ["link","page","all"],
+				contexts: ["page","frame", "link"],
 				onclick: (info/*, tab*/) => {
+					// a pageUrl is the least to expect from the contexts
+					let url = info.pageUrl;
+					// if there is a frameUrl ... that is more specific
+					if(info.frameUrl){
+						url = info.frameUrl;
+					}
+					// if there is a linkUrl, that is the most specific and wins the race 
+					if(info.linkUrl){
+						url = info.linkUrl;
+					}
 				    const link = document.createElement('a');
-				    const href = proto.name + '://' + info.linkUrl;
+				    const href = proto.name + '://' + url;
+					console.debug(href);
 				    link.setAttribute('href', href);
 				    link.click();
 				    setTimeout( () => {
