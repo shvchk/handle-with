@@ -29,14 +29,9 @@ async function onMenuShow(/*info*/) {
 					if(info.linkUrl){
 						url = info.linkUrl;
 					}
-				    const link = document.createElement('a');
-				    const href = proto.name + '://' + url;
+					const href = proto.name + '://' + url;
+					browser.tabs.update({ url: href });
 					console.debug(href);
-				    link.setAttribute('href', href);
-				    link.click();
-				    setTimeout( () => {
-					link.remove();
-				    },60000);
 				}
 			});
 		});
